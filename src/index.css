@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  /* Brand: refined teal – medical, clean, trustworthy */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  /* Keep mint as alias for compatibility */
+  --color-mint-50: #f0fdfa;
+  --color-mint-100: #ccfbf1;
+  --color-mint-400: #2dd4bf;
+  --color-mint-500: #14b8a6;
+  --color-mint-600: #0d9488;
+  --color-mint-700: #0f766e;
+  --color-slate-850: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  /* Light: soft warm-cool gradient with hint of teal */
+  background: linear-gradient(165deg, #f0fdfa 0%, #f8fafc 35%, #f1f5f9 70%, #e2e8f0 100%);
+  color: #0f172a;
+  -webkit-tap-highlight-color: rgba(20, 184, 166, 0.25);
+}
+
+html.dark body {
+  /* Dark: deep slate with subtle teal glow from top */
+  background: linear-gradient(180deg, #042f2e 0%, #0f172a 25%, #0f172a 70%, #020617 100%);
+  color: #e2e8f0;
+}
