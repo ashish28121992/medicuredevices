@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const defaultSlides = [
-  { src: 'https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80', alt: 'Healthcare at home' },
-  { src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80', alt: 'Health monitoring' },
-  { src: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80', alt: 'Quality care' },
+  { src: '/carousel/carousel1.jpg', alt: 'Carousel image 1' },
+  { src: '/carousel/carousel2.jpg', alt: 'Carousel image 2' },
+  { src: '/carousel/carousel3.jpg', alt: 'Carousel image 3' },
+  { src: '/carousel/carousel4.jpg', alt: 'Carousel image 4' },
+ 
 ]
 
 type Slide = { src: string; alt?: string }
@@ -35,10 +37,10 @@ export default function Carousel({ slides = defaultSlides, autoPlayInterval = 40
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current}
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -60 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, x: 48, scale: 0.98 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -48, scale: 0.98 }}
+              transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="absolute inset-0"
             >
               <img

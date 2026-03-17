@@ -6,22 +6,43 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-slate-50 dark:border-slate-700/50 dark:bg-slate-950 mt-auto">
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <Link to="/" className="flex items-center gap-3 font-semibold text-brand-600 dark:text-brand-400 min-h-[44px] items-center inline-flex">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-20px' }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Link to="/" className="flex flex-col items-center gap-2 font-semibold min-h-[44px] inline-flex">
               <motion.span
-                className="flex h-12 shrink-0 items-center rounded-lg bg-white dark:bg-white/10 px-2.5 py-2 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
+                className="flex h-14 sm:h-16 shrink-0 items-center rounded-lg bg-white dark:bg-white/10 px-3 py-2.5 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
-                <img src="/logo.jpg" alt="Medicure Devices" className="h-full w-auto max-w-[140px] object-contain" />
+                <img src="/logo.jpg" alt="Medicure Devices & Solutions" className="h-full w-auto max-w-[180px] object-contain" />
               </motion.span>
-              Medicure Devices
+              <motion.span
+                className="text-center text-sm sm:text-base font-semibold leading-tight whitespace-nowrap"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: 0.08 }}
+              >
+                <span className="text-blue-600 dark:text-blue-400">Medicure </span>
+                <span className="text-red-600 dark:text-red-400">Devices</span>
+                <span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
+              </motion.span>
             </Link>
-            <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+            <motion.p
+              className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.12 }}
+            >
               Trusted medical devices and equipment for healthcare at home.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <div>
             <h3 className="font-medium text-slate-800 dark:text-slate-200">Quick Links</h3>
             <ul className="mt-3 space-y-0">
@@ -48,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 sm:mt-10 border-t border-slate-200 dark:border-slate-700/50 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-slate-500">
-          © {new Date().getFullYear()} Medicure Devices. All rights reserved.
+          © {new Date().getFullYear()} Medicure Devices & Solutions. All rights reserved.
         </div>
       </div>
     </footer>

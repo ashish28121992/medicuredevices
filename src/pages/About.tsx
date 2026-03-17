@@ -45,7 +45,7 @@ export default function About() {
             transition={{ delay: 0.15, duration: 0.4 }}
             className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl md:text-5xl"
           >
-            About <span className="text-brand-600 dark:text-brand-400">Medicure Devices</span>
+            About <span className="text-blue-600 dark:text-blue-400">Medicure </span><span className="text-red-600 dark:text-red-400">Devices</span><span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -69,7 +69,7 @@ export default function About() {
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">Our Story</h2>
           <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Medicure Devices is a trusted name in home healthcare equipment. We offer a wide range of medical devices
+            Medicure Devices & Solutions is a trusted name in home healthcare equipment. We offer a wide range of medical devices
             including blood pressure monitors, pulse oximeters, nebulizers, glucometers, thermometers, and mobility
             aids. Our products are designed for reliability and ease of use, so you can manage your health with
             confidence at home.

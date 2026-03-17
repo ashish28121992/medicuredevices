@@ -18,12 +18,7 @@ export const galleryImages: string[] = [
   '/gallery/image11.jpg',
   '/gallery/image12.jpg',
   '/gallery/image13.jpg',
-  '/gallery/image14.jpg',
-  '/gallery/image15.jpg',
-  '/gallery/image16.jpg',
-  '/gallery/image17.jpg',
-  '/gallery/image18.jpg',
-  '/gallery/image19.jpg',
+  
 
   // Naye pics add karne ke liye: public/gallery/ mein file daalo, phir yahan path add karo, e.g. '/gallery/meri-pic.jpg',
 ]

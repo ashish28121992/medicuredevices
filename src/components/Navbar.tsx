@@ -5,9 +5,9 @@ import { useTheme } from '../context/ThemeContext'
 
 const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'About' },
   { to: '/products', label: 'Products' },
+  { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -18,19 +18,28 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md dark:border-slate-700/50 dark:bg-slate-950/90">
-      <div className="mx-auto flex h-16 min-h-[52px] sm:h-20 max-w-6xl items-center justify-between px-4 sm:px-6 gap-2">
-        <Link to="/" className="flex items-center gap-3 font-semibold text-brand-600 dark:text-brand-400 min-w-0 truncate" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex min-h-[88px] sm:min-h-[96px] max-w-6xl items-center justify-between px-4 sm:px-6 gap-2 py-2">
+        <Link to="/" className="flex flex-col items-center gap-1.5 shrink-0" onClick={() => setOpen(false)}>
           <motion.span
-            className="flex h-12 sm:h-14 shrink-0 items-center rounded-lg bg-white dark:bg-white/10 px-3 py-2 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
+            className="flex h-14 sm:h-16 shrink-0 items-center rounded-lg bg-white dark:bg-white/10 px-3.5 py-2.5 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.98 }}
           >
-            <img src="/logo.jpg" alt="Medicure Devices" className="h-full w-auto max-w-[220px] object-contain" />
+            <img src="/logo.jpg" alt="Medicure Devices & Solutions" className="h-full w-auto max-w-[260px] object-contain" />
           </motion.span>
-          <span className="truncate">Medicure Devices</span>
+          <motion.span
+            className="text-center text-sm sm:text-base font-semibold leading-tight whitespace-nowrap"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <span className="text-blue-600 dark:text-blue-400">Medicure </span>
+            <span className="text-red-600 dark:text-red-400">Devices</span>
+            <span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
+          </motion.span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
