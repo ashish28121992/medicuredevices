@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const brands = [
-  { name: 'Kardiowell', tone: 'brand' as const },
-  { name: 'Nareshans', tone: 'blue' as const },
-  { name: 'Surgiments', tone: 'slate' as const },
-  { name: 'Equipments', tone: 'brand' as const },
+  { name: 'Kardiowell', tone: 'brand' as const, logo: '/brands/kardiowell.jpg' },
+  { name: 'Nareshsons', tone: 'blue' as const, logo: '/brands/nareshans.jpg' },
+  { name: 'SurgmedZ', tone: 'slate' as const, logo: '/brands/surgmedz.png' },
+  { name: 'Equipments', tone: 'brand' as const, logo: '/brands/equipments.png' },
 ]
 
 const kardiowellSegments = [
@@ -15,10 +15,25 @@ const kardiowellSegments = [
   'Pediatric intensive care',
 ]
 
+const nareshansSegments = [
+  'Neuro Surgical Headframes',
+  'Self Retaining Retractor System',
+]
+
 // Cardial Surgery images — jitni pics add karni ho utni yahan path daalo (4 per row layout)
 const cardialSurgeryImages = [
   '/kardiowell/cardial-surgery-1.jpg',
   '/kardiowell/cardial-surgery-2.avif',
+]
+
+const neuroSurgicalHeadframesImages = [
+  '/nareshsons/neuro-surgical-headframes-1.webp',
+  '/nareshsons/neuro-surgical-headframes-2.png',
+  '/nareshsons/neuro-surgical-headframes-3.avif',
+]
+
+const selfRetainingRetractorImages = [
+  '/nareshsons/self-retaining-retractor-1.jpg',
 ]
 
 function KardiowellWordmark() {
@@ -99,16 +114,14 @@ export default function Products() {
                   activeBrand === b.name ? 'ring-2 ring-brand-500/60' : ''
                 }`}
               >
-                <div
-                  className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ring-1 ${
-                    b.tone === 'brand'
-                      ? 'bg-brand-500/10 text-brand-700 dark:text-brand-300 ring-brand-500/20'
-                      : b.tone === 'blue'
-                        ? 'bg-blue-500/10 text-blue-700 dark:text-blue-300 ring-blue-500/20'
-                        : 'bg-slate-500/10 text-slate-700 dark:text-slate-300 ring-slate-500/20'
-                  }`}
-                >
-                  Brand
+                <div className="inline-flex h-24 w-full items-center justify-start overflow-visible">
+                  <img
+                    src={b.logo}
+                    alt={`${b.name} logo`}
+                    className="h-full w-auto max-w-none object-contain origin-left scale-125"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
 
                 <div className="mt-5 text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -212,6 +225,132 @@ export default function Products() {
                         <img
                           src={src}
                           alt={`Cardial surgery ${i + 1}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+
+          {activeBrand === 'Nareshsons' && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mt-10 rounded-2xl border border-slate-200 bg-white/90 dark:border-slate-700/50 dark:bg-slate-900/40 p-6 sm:p-8 shadow-sm"
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
+                    Nareshsons - Clinical Focus Areas
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                    Choose a specialty to explore detailed offerings (coming soon).
+                  </p>
+                </div>
+              </div>
+
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+                  },
+                }}
+                className="mt-5 grid gap-3 sm:gap-4 sm:grid-cols-2"
+              >
+                {nareshansSegments.map((seg) => (
+                  <motion.button
+                    key={seg}
+                    type="button"
+                    variants={{
+                      hidden: { opacity: 0, y: 18, scale: 0.97 },
+                      show: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setActiveSegment(seg)}
+                    className={`rounded-xl border text-left text-sm font-medium px-4 py-3 flex items-center justify-between gap-2 ${
+                      activeSegment === seg
+                        ? 'border-blue-500 bg-blue-50 text-blue-800 dark:bg-blue-500/10 dark:border-blue-400 dark:text-blue-200'
+                        : 'border-slate-200 bg-slate-50 text-slate-800 dark:border-slate-700/50 dark:bg-slate-800/60 dark:text-slate-100'
+                    }`}
+                  >
+                    <span>{seg}</span>
+                    <span className="text-xs text-slate-400 dark:text-slate-500">
+                      {activeSegment === seg ? 'Selected' : 'Soon'}
+                    </span>
+                  </motion.button>
+                ))}
+              </motion.div>
+
+              {activeSegment === 'Neuro Surgical Headframes' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-900/40 p-4 sm:p-6"
+                >
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Neuro Surgical Headframes
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                    Visuals for Nareshsons neuro surgical headframes segment.
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    {neuroSurgicalHeadframesImages.map((src, i) => (
+                      <motion.div
+                        key={src}
+                        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
+                        initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        whileHover={{ scale: 1.03 }}
+                      >
+                        <img
+                          src={src}
+                          alt={`Neuro surgical headframe ${i + 1}`}
+                          className={`h-full w-full object-cover ${i === 0 ? 'object-bottom scale-110' : ''}`}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {activeSegment === 'Self Retaining Retractor System' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-900/40 p-4 sm:p-6"
+                >
+                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">
+                    Self Retaining Retractor System
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                    Visuals for Nareshsons self retaining retractor system segment.
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    {selfRetainingRetractorImages.map((src, i) => (
+                      <motion.div
+                        key={src}
+                        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
+                        initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        whileHover={{ scale: 1.03 }}
+                      >
+                        <img
+                          src={src}
+                          alt={`Self retaining retractor ${i + 1}`}
                           className="h-full w-full object-cover"
                         />
                       </motion.div>

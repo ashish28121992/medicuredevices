@@ -51,15 +51,17 @@ export default function SisterConcernsSection() {
             transition={{ duration: 0.2 }}
             className="group rounded-2xl border border-slate-200 bg-white dark:border-slate-700/50 dark:bg-slate-800/30 p-6 sm:p-8 shadow-sm dark:shadow-none"
           >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10 text-brand-700 dark:text-brand-300 ring-1 ring-brand-500/20">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-              </div>
+            <div className="flex flex-col gap-4">
+              <img
+                src="/sister-concerns/healthcure-devices.jpeg"
+                alt="HealthCure Devices logo"
+                className="h-20 sm:h-24 w-auto max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="min-w-0">
-                <div className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
-                  Health Cure Devices
+                <div className="text-lg sm:text-xl font-semibold text-emerald-700 dark:text-emerald-400">
+                  HealthCure Devices
                 </div>
                 <div className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Medical solutions and equipment for reliable care.
@@ -78,15 +80,17 @@ export default function SisterConcernsSection() {
             transition={{ duration: 0.2 }}
             className="group rounded-2xl border border-slate-200 bg-white dark:border-slate-700/50 dark:bg-slate-800/30 p-6 sm:p-8 shadow-sm dark:shadow-none"
           >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-700 dark:text-blue-300 ring-1 ring-blue-500/20">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" />
-                </svg>
-              </div>
+            <div className="flex flex-col gap-4">
+              <img
+                src="/sister-concerns/mydevices-corporation.jpeg"
+                alt="Mydevices Corporation logo"
+                className="h-20 sm:h-24 w-auto max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="min-w-0">
                 <div className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
-                  My Devices Inc.
+                  Mydevices Corporation
                 </div>
                 <div className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Device innovation focused on quality and usability.
