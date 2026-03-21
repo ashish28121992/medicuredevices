@@ -33,15 +33,6 @@ export default function Footer() {
                 <span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
               </motion.span>
             </Link>
-            <motion.p
-              className="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.12 }}
-            >
-              Trusted medical devices and equipment for healthcare at home.
-            </motion.p>
           </motion.div>
           <div>
             <h3 className="font-medium text-slate-800 dark:text-slate-200">Quick Links</h3>
@@ -56,10 +47,10 @@ export default function Footer() {
           <div>
             <h3 className="font-medium text-slate-800 dark:text-slate-200">Categories</h3>
             <ul className="mt-3 space-y-2 text-sm text-slate-500 dark:text-slate-400">
-              <li>Monitoring</li>
-              <li>Respiratory</li>
-              <li>Diabetes Care</li>
-              <li>Mobility</li>
+              <li>Kardiowell</li>
+              <li>Nareshsons</li>
+              <li>SurgmedZ</li>
+              <li>Surgicle Equipments</li>
             </ul>
           </div>
           <div>

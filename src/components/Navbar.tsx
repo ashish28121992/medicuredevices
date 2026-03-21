@@ -18,20 +18,24 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md dark:border-slate-700/50 dark:bg-slate-950/90">
-      <div className="mx-auto flex min-h-[88px] sm:min-h-[96px] max-w-6xl items-center justify-between px-4 sm:px-6 gap-2 py-2">
+      <div className="mx-auto flex min-h-[104px] sm:min-h-[120px] max-w-6xl items-center justify-between px-4 sm:px-6 gap-2 py-2">
         <Link to="/" className="flex flex-col items-center gap-1.5 shrink-0" onClick={() => setOpen(false)}>
           <motion.span
-            className="flex h-14 sm:h-16 shrink-0 items-center rounded-lg bg-white dark:bg-white/10 px-3.5 py-2.5 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
+            className="flex h-[5.25rem] sm:h-28 md:h-32 shrink-0 items-center rounded-xl bg-white dark:bg-white/10 px-3 sm:px-4 py-2.5 ring-1 ring-slate-200/50 dark:ring-slate-600/50"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.98 }}
           >
-            <img src="/logo.jpg" alt="Medicure Devices & Solutions" className="h-full w-auto max-w-[260px] object-contain" />
+            <img
+              src="/logo.jpg"
+              alt="Medicure Devices & Solutions"
+              className="h-full w-auto max-w-[min(100vw-8rem,380px)] sm:max-w-[400px] object-contain"
+            />
           </motion.span>
           <motion.span
-            className="text-center text-sm sm:text-base font-semibold leading-tight whitespace-nowrap"
+            className="text-center text-sm sm:text-base md:text-lg font-semibold leading-tight whitespace-nowrap"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}

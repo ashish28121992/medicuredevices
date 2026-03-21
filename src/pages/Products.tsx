@@ -1,11 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const brands = [
-  { name: 'Kardiowell', tone: 'brand' as const, logo: '/brands/kardiowell.jpg' },
-  { name: 'Nareshsons', tone: 'blue' as const, logo: '/brands/nareshans.jpg' },
-  { name: 'SurgmedZ', tone: 'slate' as const, logo: '/brands/surgmedz.png' },
-  { name: 'Equipments', tone: 'brand' as const, logo: '/brands/equipments.png' },
+  {
+    name: 'Kardiowell',
+    tone: 'brand' as const,
+    logo: '/brands/kardiowell.jpg',
+    tagline: 'Surgical & Disposable Medical Devices',
+  },
+  {
+    name: 'Nareshsons',
+    tone: 'blue' as const,
+    logo: '/brands/nareshans.jpg',
+    tagline: 'Neuro Surgical Headframes\nSelf Retaining Retractor System',
+  },
+  {
+    name: 'SurgmedZ',
+    tone: 'slate' as const,
+    logo: '/brands/surgmedz.png',
+    tagline: 'SS-TI, Surgical instruments',
+  },
+  {
+    name: 'Equipments',
+    tone: 'brand' as const,
+    logo: '/brands/equipments.png',
+    tagline: 'Premium medical devices & solutions.',
+  },
 ]
 
 const kardiowellSegments = [
@@ -65,6 +85,18 @@ function KardiowellWordmark() {
 export default function Products() {
   const [activeBrand, setActiveBrand] = useState<string | null>(null)
   const [activeSegment, setActiveSegment] = useState<string | null>(null)
+  const detailPanelRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (activeBrand !== 'Kardiowell' && activeBrand !== 'Nareshsons') return
+    const id = window.setTimeout(() => {
+      detailPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 100)
+    return () => window.clearTimeout(id)
+  }, [activeBrand])
+
+  const showBrandDetail =
+    activeBrand === 'Kardiowell' || activeBrand === 'Nareshsons'
 
   return (
     <div className="overflow-x-hidden">
@@ -84,6 +116,8 @@ export default function Products() {
             </p>
           </div>
 
+          {/* Mobile: segments panel shows above the cards (order). Desktop: grid first, panel below. */}
+          <div className="mt-10 flex w-full flex-col gap-6 lg:gap-8">
           <motion.div
             initial="hidden"
             animate="show"
@@ -95,9 +129,11 @@ export default function Products() {
                 transition: { staggerChildren: 0.08, delayChildren: 0.1 },
               },
             }}
-            className="mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="order-2 grid w-full gap-4 sm:gap-6 sm:grid-cols-2 lg:order-1 lg:grid-cols-4"
           >
-            {brands.map((b) => (
+            {brands.map((b) => {
+              const largeReadableLogo = b.name === 'Kardiowell' || b.name === 'Nareshsons'
+              return (
               <motion.div
                 key={b.name}
                 variants={{
@@ -114,11 +150,21 @@ export default function Products() {
                   activeBrand === b.name ? 'ring-2 ring-brand-500/60' : ''
                 }`}
               >
-                <div className="inline-flex h-24 w-full items-center justify-start overflow-visible">
+                <div
+                  className={`inline-flex w-full items-center justify-start overflow-visible ${
+                    largeReadableLogo
+                      ? 'min-h-[8.5rem] h-36 sm:h-44 md:h-48'
+                      : 'h-24'
+                  }`}
+                >
                   <img
                     src={b.logo}
                     alt={`${b.name} logo`}
-                    className="h-full w-auto max-w-none object-contain origin-left scale-125"
+                    className={`h-full w-auto object-contain origin-left ${
+                      largeReadableLogo
+                        ? 'max-w-[min(100%,26rem)] scale-110 sm:scale-[1.12]'
+                        : 'max-w-none scale-125'
+                    }`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -128,8 +174,16 @@ export default function Products() {
                   {b.name === 'Kardiowell' ? <KardiowellWordmark /> : b.name}
                 </div>
 
-                <div className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Premium medical devices &amp; solutions.
+                <div className="mt-2 text-sm leading-relaxed whitespace-pre-line">
+                  {b.name === 'SurgmedZ' ? (
+                    <p className="text-slate-600 dark:text-slate-400">
+                      <span className="font-semibold text-brand-600 dark:text-brand-400">SS-TI</span>
+                      <span className="text-slate-400 dark:text-slate-500">, </span>
+                      <span className="text-slate-700 dark:text-slate-300">Surgical instruments</span>
+                    </p>
+                  ) : (
+                    <span className="text-slate-600 dark:text-slate-400">{b.tagline}</span>
+                  )}
                 </div>
 
                 <div className="mt-6 h-px bg-slate-200 dark:bg-slate-700/50" />
@@ -140,16 +194,24 @@ export default function Products() {
                   </span>
                 </div>
               </motion.div>
-            ))}
+            )})}
           </motion.div>
 
+          {showBrandDetail && (
+            <div
+              ref={detailPanelRef}
+              className="order-1 w-full scroll-mt-24 sm:scroll-mt-28 lg:order-2"
+              role="region"
+              aria-live="polite"
+              aria-label="Product segments for selected brand"
+            >
           {activeBrand === 'Kardiowell' && (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="mt-10 rounded-2xl border border-slate-200 bg-white/90 dark:border-slate-700/50 dark:bg-slate-900/40 p-6 sm:p-8 shadow-sm"
+              className="rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/90 shadow-lg ring-1 ring-slate-200/70 dark:border-slate-600/45 dark:from-slate-900/95 dark:to-slate-900/60 dark:ring-slate-700/50 p-6 sm:p-8"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -241,7 +303,7 @@ export default function Products() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="mt-10 rounded-2xl border border-slate-200 bg-white/90 dark:border-slate-700/50 dark:bg-slate-900/40 p-6 sm:p-8 shadow-sm"
+              className="rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-blue-50/40 shadow-lg ring-1 ring-slate-200/70 dark:border-slate-600/45 dark:from-slate-900/95 dark:to-slate-900/60 dark:ring-slate-700/50 p-6 sm:p-8"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -360,6 +422,9 @@ export default function Products() {
               )}
             </motion.div>
           )}
+            </div>
+          )}
+          </div>
         </div>
       </motion.section>
     </div>
