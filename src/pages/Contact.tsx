@@ -1,4 +1,11 @@
 import { motion } from 'framer-motion'
+import { GOOGLE_MAPS_EMBED_SRC, GOOGLE_MAPS_OPEN_URL } from '../config/contactMap'
+
+const addressLines = [
+  'Shop no. E, 36, Main Rd, C Sector,',
+  'Nehru Nagar, Bhopal,',
+  'Madhya Pradesh 462003',
+]
 
 export default function Contact() {
   return (
@@ -7,46 +14,130 @@ export default function Contact() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="px-4 py-16 sm:px-6 sm:py-24"
+        className="px-4 py-14 sm:px-6 sm:py-20"
       >
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Contact Us</h1>
-          <p className="mt-4 text-slate-600 dark:text-slate-400">
-            For product enquiries or support, reach out to us.
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            Contact Us
+          </h1>
+          <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+            Product enquiries, support, or visit us — we’re here to help.
           </p>
         </div>
       </motion.section>
 
       <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.08 }}
         className="px-4 pb-20 sm:px-6"
       >
-        <div className="mx-auto max-w-2xl">
-          <div className="rounded-2xl border border-slate-200 bg-white dark:border-slate-700/50 dark:bg-slate-800/30 p-6 sm:p-8 space-y-8 shadow-sm dark:shadow-none">
-            <motion.a
-              href="mailto:support@medicuredevices.com"
-              whileHover={{ x: 4 }}
-              className="block group"
-            >
-              <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Email</p>
-              <span className="text-lg text-brand-600 dark:text-brand-400 group-hover:underline break-all">
-                support@medicuredevices.com
-              </span>
-            </motion.a>
-            <motion.a
-              href="tel:+911800xxxxxxx"
-              whileHover={{ x: 4 }}
-              className="block group"
-            >
-              <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Phone</p>
-              <span className="text-lg text-brand-600 dark:text-brand-400 group-hover:underline">
-                +91 1800-xxx-xxxx
-              </span>
-            </motion.a>
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border border-slate-200/90 bg-gradient-to-br from-[#fafaf9] to-slate-50 dark:bg-gradient-to-br dark:from-slate-900/80 dark:to-slate-900/40 dark:border-slate-700/60 p-6 sm:p-10 shadow-sm ring-1 ring-slate-200/60 dark:ring-slate-700/40">
+            {/* Business-card style: vertical accent line */}
+            <div className="flex gap-5 sm:gap-8">
+              <div
+                className="w-1 shrink-0 rounded-full bg-gradient-to-b from-slate-300 via-slate-400 to-slate-300 dark:from-slate-600 dark:via-slate-500 dark:to-slate-600"
+                aria-hidden
+              />
+              <div className="min-w-0 flex-1 space-y-8 text-left">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Company
+                  </p>
+                  <p className="mt-2 text-xl font-bold tracking-tight sm:text-2xl">
+                    <span className="text-blue-800 dark:text-blue-400">Medicure </span>
+                    <span className="text-red-600 dark:text-red-400">Devices</span>
+                    <span className="text-blue-800 dark:text-blue-400"> &amp; Solutions</span>
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Address
+                  </p>
+                  <address className="mt-2 not-italic text-base leading-relaxed text-slate-800 dark:text-slate-200">
+                    {addressLines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </address>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
+                  <motion.a
+                    href="tel:+919926414200"
+                    whileHover={{ x: 4 }}
+                    className="block group"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      Mobile
+                    </p>
+                    <span className="mt-2 text-lg font-medium text-brand-600 dark:text-brand-400 group-hover:underline">
+                      +91 99264 14200
+                    </span>
+                  </motion.a>
+
+                  <motion.a
+                    href="mailto:mdsbpl@yahoo.com"
+                    whileHover={{ x: 4 }}
+                    className="block group"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      E-mail
+                    </p>
+                    <span className="mt-2 text-lg font-medium text-brand-600 dark:text-brand-400 group-hover:underline break-all">
+                      mdsbpl@yahoo.com
+                    </span>
+                  </motion.a>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+            Prefer WhatsApp? Use the green button at the bottom-right of the page.
+          </p>
+
+          {/* Google Map — embed URL: src/config/contactMap.ts or VITE_GOOGLE_MAPS_EMBED_URL */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mt-12"
+          >
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white sm:text-xl">
+              Find us on the map
+            </h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+              Location: Nehru Nagar, Bhopal — open in Google Maps for directions.
+            </p>
+            <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700/60 dark:bg-slate-800/40">
+              <div className="relative aspect-[4/3] w-full min-h-[240px] sm:aspect-video sm:min-h-[280px]">
+                <iframe
+                  title="Medicure Devices & Solutions on Google Maps"
+                  src={GOOGLE_MAPS_EMBED_SRC}
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm">
+              <a
+                href={GOOGLE_MAPS_OPEN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-medium text-brand-600 hover:underline dark:text-brand-400"
+              >
+                Open in Google Maps
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
     </div>
