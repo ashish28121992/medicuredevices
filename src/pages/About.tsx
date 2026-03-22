@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const container = {
@@ -13,12 +14,29 @@ const item = {
   show: { opacity: 1, y: 0 },
 }
 
-const categories = [
-  { name: 'Monitoring', icon: '📊', desc: 'BP monitors, oximeters, thermometers' },
-  { name: 'Respiratory', icon: '🫁', desc: 'Nebulizers, CPAP, breathing support' },
-  { name: 'Diabetes Care', icon: '🩸', desc: 'Glucometers, strips, and accessories' },
-  { name: 'Mobility', icon: '♿', desc: 'Wheelchairs, walkers, and aids' },
-]
+/** Same brands / offer lines as Products page */
+const productBrands = [
+  {
+    name: 'Kardiowell',
+    logo: '/brands/kardiowell.jpg',
+    tagline: 'Surgical & Disposable Medical Devices',
+  },
+  {
+    name: 'Nareshsons',
+    logo: '/brands/nareshans.jpg',
+    tagline: 'Neuro Surgical Headframes · Self Retaining Retractor System',
+  },
+  {
+    name: 'SurgmedZ',
+    logo: '/brands/surgmedz.png',
+    tagline: 'SS-TI, Surgical instruments',
+  },
+  {
+    name: 'Equipments',
+    logo: '/brands/equipments.png',
+    tagline: 'Premium medical devices & solutions.',
+  },
+] as const
 
 const values = [
   'Quality & reliability in every product',
@@ -45,7 +63,7 @@ export default function About() {
             transition={{ delay: 0.15, duration: 0.4 }}
             className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl md:text-5xl"
           >
-            About <span className="text-blue-600 dark:text-blue-400">Medicure </span><span className="text-red-600 dark:text-red-400">Devices</span><span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
+             <span className="text-blue-600 dark:text-blue-400">Medicure </span><span className="text-red-600 dark:text-red-400">Devices</span><span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -68,12 +86,29 @@ export default function About() {
       >
         <div className="mx-auto max-w-3xl">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">Our Story</h2>
-          <p className="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Medicure Devices & Solutions is a trusted name in home healthcare equipment. We offer a wide range of medical devices
-            including blood pressure monitors, pulse oximeters, nebulizers, glucometers, thermometers, and mobility
-            aids. Our products are designed for reliability and ease of use, so you can manage your health with
-            confidence at home.
-          </p>
+          <div className="mt-4 space-y-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+            <p>
+              Medicure Devices &amp; Solutions was incorporated in 2014 with a vision to establish a strong presence in
+              Central India&apos;s medical fraternity. Over the years, the company has steadily expanded its reach beyond
+              Central India and is now growing across the country through strong channel partnerships and emerging market
+              opportunities.
+            </p>
+            <p>
+              We specialize in providing high-quality medical devices and solutions across multiple healthcare segments,
+              including Cardiac Surgery, Cardiac Anesthesia, Perfusion, Cardiology, Intensive Care, Respiratory Care,
+              Nephrology, and General Surgery.
+            </p>
+            <p>
+              Our portfolio includes medical-grade, rust-free stainless steel surgical instruments, self-retaining
+              retractor systems, and neurosurgical head frames. These products are designed to meet the highest standards
+              of precision, durability, and reliability, helping healthcare professionals deliver better patient care.
+            </p>
+            <p>
+              Despite the dominance of multinational companies in the Indian medical device market, Medicure Devices
+              &amp; Solutions is steadily building a strong presence by focusing on quality, service excellence, and
+              ethical business practices—the same core values that industry experts believe drive success in this sector.
+            </p>
+          </div>
         </div>
       </motion.section>
 
@@ -86,20 +121,39 @@ export default function About() {
         className="px-4 py-12 sm:px-6 sm:py-16 border-t border-slate-200 dark:border-slate-700/50"
       >
         <div className="mx-auto max-w-6xl">
-          <motion.h2 variants={item} className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl mb-8">
+          <motion.h2 variants={item} className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl mb-2">
             What We Offer
           </motion.h2>
+          <motion.p variants={item} className="mb-8 text-sm text-slate-600 dark:text-slate-400">
+            Explore our product families on the{' '}
+            <Link to="/products" className="font-medium text-brand-600 hover:underline dark:text-brand-400">
+              Products
+            </Link>{' '}
+            page.
+          </motion.p>
           <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((cat) => (
-              <motion.div
-                key={cat.name}
-                variants={item}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="rounded-2xl border border-slate-200 bg-white dark:border-slate-700/50 dark:bg-slate-800/30 p-6 hover:border-brand-500/50 dark:hover:border-brand-500/40 transition-colors shadow-sm dark:shadow-none"
-              >
-                <span className="text-3xl">{cat.icon}</span>
-                <h3 className="mt-3 font-semibold text-slate-900 dark:text-white">{cat.name}</h3>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{cat.desc}</p>
+            {productBrands.map((b) => (
+              <motion.div key={b.name} variants={item}>
+                <Link
+                  to="/products"
+                  className="block h-full rounded-2xl border border-slate-200 bg-white p-6 transition-colors hover:border-brand-500/50 dark:border-slate-700/50 dark:bg-slate-800/30 dark:hover:border-brand-500/40 shadow-sm dark:shadow-none"
+                >
+                  <motion.div whileHover={{ y: -4, transition: { duration: 0.2 } }} className="h-full">
+                    <div className="flex h-14 w-full items-center justify-start">
+                      <img
+                        src={b.logo}
+                        alt={`${b.name} logo`}
+                        className="max-h-full w-auto max-w-[200px] object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h3 className="mt-4 font-semibold text-slate-900 dark:text-white">{b.name}</h3>
+                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{b.tagline}</p>
+                    <p className="mt-3 text-xs font-medium text-brand-600 dark:text-brand-400">
+                      View segments →
+                    </p>
+                  </motion.div>
+                </Link>
               </motion.div>
             ))}
           </div>

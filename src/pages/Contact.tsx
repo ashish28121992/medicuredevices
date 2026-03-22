@@ -7,6 +7,19 @@ const addressLines = [
   'Madhya Pradesh 462003',
 ]
 
+/** Company line — shown first, highlighted */
+const COMPANY_PHONE = {
+  tel: '+917553509368',
+  display: '+91 75535 09368',
+}
+
+/** Other contact numbers (tap to call) */
+const OTHER_PHONES = [
+  { tel: '+919754935692', display: '+91 97549 35692' },
+  { tel: '+919713105858', display: '+91 97131 05858' },
+  { tel: '+919926414200', display: '+91 99264 14200' },
+] as const
+
 export default function Contact() {
   return (
     <div className="overflow-x-hidden">
@@ -65,20 +78,49 @@ export default function Contact() {
                   </address>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
+                {/* Company number — primary, easy to spot */}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Company number
+                  </p>
                   <motion.a
-                    href="tel:+919926414200"
-                    whileHover={{ x: 4 }}
-                    className="block group"
+                    href={`tel:${COMPANY_PHONE.tel}`}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="mt-3 flex flex-col rounded-xl border-2 border-brand-500/40 bg-brand-500/10 px-4 py-4 shadow-sm ring-1 ring-brand-500/20 transition-colors hover:bg-brand-500/15 dark:border-brand-400/35 dark:bg-brand-500/15 dark:ring-brand-400/20"
                   >
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                      Mobile
-                    </p>
-                    <span className="mt-2 text-lg font-medium text-brand-600 dark:text-brand-400 group-hover:underline">
-                      +91 99264 14200
+                    <span className="text-xs font-medium uppercase tracking-wide text-brand-800 dark:text-brand-200">
+                      Main office line
+                    </span>
+                    <span className="mt-1 text-2xl font-bold tracking-tight text-brand-700 dark:text-brand-300 sm:text-3xl">
+                      {COMPANY_PHONE.display}
+                    </span>
+                    <span className="mt-2 text-xs text-slate-600 dark:text-slate-400">
+                      Prefer this number for company enquiries &amp; office contact.
                     </span>
                   </motion.a>
+                </div>
 
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    Other contact numbers
+                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {OTHER_PHONES.map((p) => (
+                      <li key={p.tel}>
+                        <motion.a
+                          href={`tel:${p.tel}`}
+                          whileHover={{ x: 4 }}
+                          className="inline-flex items-center gap-2 text-base font-medium text-brand-600 hover:underline dark:text-brand-400"
+                        >
+                          {p.display}
+                        </motion.a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
                   <motion.a
                     href="mailto:mdsbpl@yahoo.com"
                     whileHover={{ x: 4 }}

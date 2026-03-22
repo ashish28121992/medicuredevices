@@ -50,7 +50,7 @@ export default function Footer() {
               <li>Kardiowell</li>
               <li>Nareshsons</li>
               <li>SurgmedZ</li>
-              <li>Surgicle Equipments</li>
+              <li>Surgical Equipments</li>
             </ul>
           </div>
           <div>
@@ -61,7 +61,12 @@ export default function Footer() {
               Madhya Pradesh 462003
             </p>
             <a href="mailto:mdsbpl@yahoo.com" className="mt-3 block py-2.5 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 break-all">mdsbpl@yahoo.com</a>
-            <a href="tel:+919926414200" className="block py-2.5 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400">+91 99264 14200</a>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-500">Company</p>
+            <a href="tel:+917553509368" className="block py-1 text-sm font-semibold text-slate-800 hover:text-brand-600 dark:text-slate-200 dark:hover:text-brand-400">+91 75535 09368</a>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Also</p>
+            <a href="tel:+919754935692" className="block py-1 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400">+91 97549 35692</a>
+            <a href="tel:+919713105858" className="block py-1 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400">+91 97131 05858</a>
+            <a href="tel:+919926414200" className="block py-1 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400">+91 99264 14200</a>
           </div>
         </div>
         <div className="mt-8 sm:mt-10 border-t border-slate-200 dark:border-slate-700/50 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-slate-500">
