@@ -7,15 +7,6 @@ export type SelfRetainingRetractorSlide = {
   content: ReactNode
 }
 
-/** self-retaining-retractor-1.jpg — tumne abhi text nahi diya, isliye short line only */
-function RetractorImage1Placeholder() {
-  return (
-    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-      Product-specific details for this image can be added later when you share the copy.
-    </p>
-  )
-}
-
 /** self-retaining-refractor-2.jpeg — tumhara poora detail yahan hai */
 function RetractorImage2FullDetails() {
   return (
@@ -492,12 +483,6 @@ function RetractorImage7SelfRetainingDetails() {
 }
 
 export const selfRetainingRetractorSlides: SelfRetainingRetractorSlide[] = [
-  {
-    id: 'retractor-1',
-    src: '/nareshsons/self-retaining-retractor-1.jpg',
-    title: 'Self Retaining Retractor',
-    content: <RetractorImage1Placeholder />,
-  },
   {
     id: 'retractor-2',
     src: '/nareshsons/self-retaining-refractor-2.jpeg',
