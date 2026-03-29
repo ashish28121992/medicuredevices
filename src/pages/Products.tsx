@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import SelfRetainingRetractorModal from '../components/SelfRetainingRetractorModal'
+import {
+  selfRetainingRetractorSlides,
+  type SelfRetainingRetractorSlide,
+} from '../data/selfRetainingRetractorSlides'
 
 const brands = [
   {
@@ -52,10 +57,6 @@ const neuroSurgicalHeadframesImages = [
   '/nareshsons/neuro-surgical-headframes-3.avif',
 ]
 
-const selfRetainingRetractorImages = [
-  '/nareshsons/self-retaining-retractor-1.jpg',
-]
-
 function KardiowellWordmark() {
   // "Kard" + i-with-heart-dot + "owell". Use dotless ı (U+0131) as stem, heart on top = clean "i"
   const before = 'Kard'
@@ -85,6 +86,7 @@ function KardiowellWordmark() {
 export default function Products() {
   const [activeBrand, setActiveBrand] = useState<string | null>(null)
   const [activeSegment, setActiveSegment] = useState<string | null>(null)
+  const [retractorModalSlide, setRetractorModalSlide] = useState<SelfRetainingRetractorSlide | null>(null)
   const detailPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -93,6 +95,14 @@ export default function Products() {
       detailPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 100)
     return () => window.clearTimeout(id)
+  }, [activeBrand])
+
+  useEffect(() => {
+    if (activeSegment !== 'Self Retaining Retractor System') setRetractorModalSlide(null)
+  }, [activeSegment])
+
+  useEffect(() => {
+    if (activeBrand !== 'Nareshsons') setRetractorModalSlide(null)
   }, [activeBrand])
 
   const showBrandDetail =
@@ -397,25 +407,34 @@ export default function Products() {
                   <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">
                     Self Retaining Retractor System
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
                     Visuals for Nareshsons self retaining retractor system segment.
                   </p>
+                  <p className="mb-5 text-xs text-slate-500 dark:text-slate-500">
+                    Tap an image to view full details (specifications &amp; components).
+                  </p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                    {selfRetainingRetractorImages.map((src, i) => (
-                      <motion.div
-                        key={src}
-                        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
+                    {selfRetainingRetractorSlides.map((slide, i) => (
+                      <motion.button
+                        key={slide.id}
+                        type="button"
+                        onClick={() => setRetractorModalSlide(slide)}
+                        className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm text-left ring-0 transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                         initial={{ opacity: 0, y: 12, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
                         whileHover={{ scale: 1.03 }}
+                        aria-label={`Open details: ${slide.title}`}
                       >
                         <img
-                          src={src}
-                          alt={`Self retaining retractor ${i + 1}`}
+                          src={slide.src}
+                          alt={slide.title}
                           className="h-full w-full object-cover"
                         />
-                      </motion.div>
+                        <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent px-2 py-2 text-center text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 sm:text-xs">
+                          View details
+                        </span>
+                      </motion.button>
                     ))}
                   </div>
                 </motion.div>
@@ -427,6 +446,11 @@ export default function Products() {
           </div>
         </div>
       </motion.section>
+
+      <SelfRetainingRetractorModal
+        slide={retractorModalSlide}
+        onClose={() => setRetractorModalSlide(null)}
+      />
     </div>
   )
 }
