@@ -418,6 +418,79 @@ function RetractorImage6BookwalterDetails() {
   )
 }
 
+/** self-retaining-refractor-7.jpeg — Self-Retaining Retractor (general) */
+function RetractorImage7SelfRetainingDetails() {
+  return (
+    <div className="space-y-5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+      <p>
+        The Self-Retaining Retractor is a surgical instrument used to hold back tissues, muscles, or skin during surgery.
+        Unlike handheld retractors, this instrument has a locking or ratchet mechanism that keeps the blades open
+        automatically, allowing the surgeon to work with both hands without needing an assistant.
+      </p>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Purpose</h4>
+        <p className="mt-2">
+          The main purpose of this instrument is to maintain clear exposure of the surgical area by keeping the incision
+          open and holding tissues apart throughout the procedure.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Key Features</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Self-Locking Mechanism:</strong> A ratchet or screw
+            locking system keeps the retractor blades fixed in position after adjustment.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Adjustable Blades:</strong> Blades can be positioned
+            and adjusted to retract tissues from different directions.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Hands-Free Operation:</strong> Once locked, the
+            instrument maintains tissue retraction automatically, reducing the need for continuous manual support.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Strong Surgical Material:</strong> Usually medical-grade
+            stainless steel—durable, corrosion-resistant, and suitable for sterilization.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Main Components</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>Frame or handle</li>
+          <li>Retractor blades</li>
+          <li>Ratchet / locking mechanism</li>
+          <li>Adjustment screw or knob</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Common Uses</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>General surgery</li>
+          <li>Orthopedic surgery</li>
+          <li>Gynecological procedures</li>
+          <li>Plastic and minor surgical operations</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Advantages</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>Provides stable and continuous tissue retraction</li>
+          <li>Improves visibility of the surgical field</li>
+          <li>Reduces the need for additional assistants</li>
+          <li>Enhances surgical precision and efficiency</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 export const selfRetainingRetractorSlides: SelfRetainingRetractorSlide[] = [
   {
     id: 'retractor-1',
@@ -454,5 +527,11 @@ export const selfRetainingRetractorSlides: SelfRetainingRetractorSlide[] = [
     src: '/nareshsons/self-retaining-refractor-6.jpeg',
     title: 'Bookwalter Retractor System',
     content: <RetractorImage6BookwalterDetails />,
+  },
+  {
+    id: 'retractor-7',
+    src: '/nareshsons/self-retaining-refractor-7.jpeg',
+    title: 'Self-Retaining Retractor',
+    content: <RetractorImage7SelfRetainingDetails />,
   },
 ]
