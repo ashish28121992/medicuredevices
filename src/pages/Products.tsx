@@ -57,6 +57,9 @@ const neuroSurgicalHeadframesImages = [
   '/nareshsons/neuro-surgical-headframes-3.avif',
 ]
 
+// Equipments — subcategory nahi; files yahan rakho: public/equipments/  → paths: /equipments/filename.jpg
+const equipmentsImages: string[] = ['/equipments/equipmentsmonitor1.jpg']
+
 function KardiowellWordmark() {
   // "Kard" + i-with-heart-dot + "owell". Use dotless ı (U+0131) as stem, heart on top = clean "i"
   const before = 'Kard'
@@ -90,7 +93,7 @@ export default function Products() {
   const detailPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (activeBrand !== 'Kardiowell' && activeBrand !== 'Nareshsons') return
+    if (activeBrand !== 'Kardiowell' && activeBrand !== 'Nareshsons' && activeBrand !== 'Equipments') return
     const id = window.setTimeout(() => {
       detailPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 100)
@@ -106,7 +109,7 @@ export default function Products() {
   }, [activeBrand])
 
   const showBrandDetail =
-    activeBrand === 'Kardiowell' || activeBrand === 'Nareshsons'
+    activeBrand === 'Kardiowell' || activeBrand === 'Nareshsons' || activeBrand === 'Equipments'
 
   return (
     <div className="overflow-x-hidden">
@@ -198,7 +201,13 @@ export default function Products() {
 
                 <div className="mt-6 h-px bg-slate-200 dark:bg-slate-700/50" />
                 <div className="mt-4 text-sm font-medium text-slate-700 dark:text-slate-200">
-                  {activeBrand === b.name ? 'Hide segments' : 'View segments'}{' '}
+                  {b.name === 'Equipments'
+                    ? activeBrand === b.name
+                      ? 'Hide gallery'
+                      : 'View gallery'
+                    : activeBrand === b.name
+                      ? 'Hide segments'
+                      : 'View segments'}{' '}
                   <span className="inline-block transition-transform group-hover:translate-x-1">
                     →
                   </span>
@@ -438,6 +447,51 @@ export default function Products() {
                     ))}
                   </div>
                 </motion.div>
+              )}
+            </motion.div>
+          )}
+
+          {activeBrand === 'Equipments' && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-teal-50/30 shadow-lg ring-1 ring-slate-200/70 dark:border-slate-600/45 dark:from-slate-900/95 dark:to-slate-900/60 dark:ring-slate-700/50 p-6 sm:p-8"
+            >
+              <h2 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
+                Equipments
+              </h2>
+              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                Premium medical devices &amp; solutions — product gallery.
+              </p>
+
+              {equipmentsImages.length === 0 ? (
+                <p className="mt-6 rounded-lg border border-dashed border-slate-300 bg-slate-50/80 px-4 py-8 text-center text-sm text-slate-600 dark:border-slate-600 dark:bg-slate-800/40 dark:text-slate-400">
+                  Abhi koi image add nahi hai. Photos is folder mein rakho:{' '}
+                  <span className="font-mono text-xs">public/equipments/</span> phir{' '}
+                  <span className="font-mono text-xs">Products.tsx</span> mein{' '}
+                  <span className="font-mono text-xs">equipmentsImages</span> array mein path likho — jaise{' '}
+                  <span className="font-mono text-xs">/equipments/meri-photo.jpg</span>
+                </p>
+              ) : (
+                <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                  {equipmentsImages.map((src, i) => (
+                    <motion.div
+                      key={src}
+                      className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
+                      initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
+                      whileHover={{ scale: 1.03 }}
+                    >
+                      <img
+                        src={src}
+                        alt={`Equipments ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
               )}
             </motion.div>
           )}
