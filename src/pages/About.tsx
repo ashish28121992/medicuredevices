@@ -65,14 +65,6 @@ export default function About() {
           >
              <span className="text-blue-600 dark:text-blue-400">Medicure </span><span className="text-red-600 dark:text-red-400">Devices</span><span className="text-blue-600 dark:text-blue-400"> & Solutions</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.4 }}
-            className="mt-4 text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed"
-          >
-            Your trusted partner in home healthcare.
-          </motion.p>
         </div>
       </motion.section>
 
