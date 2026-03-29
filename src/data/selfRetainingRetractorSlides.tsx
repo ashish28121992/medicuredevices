@@ -271,6 +271,153 @@ function RetractorImage4CasparDetails() {
   )
 }
 
+/** self-retaining-refractor-5.jpeg — Rultract Retractor Set */
+function RetractorImage5RultractDetails() {
+  return (
+    <div className="space-y-5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+      <p>
+        The Rultract Retractor Set is a surgical retraction system used to provide stable and hands-free retraction of
+        tissues and muscles during surgery. It is commonly used in abdominal, spinal, and other open surgical procedures
+        where a clear and wide surgical field is required.
+      </p>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Purpose</h4>
+        <p className="mt-2">
+          The main purpose of the Rultract system is to hold tissues and organs away from the surgical area, allowing the
+          surgeon to work with better visibility and precision without continuous manual assistance.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Key Features</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Table-Mounted Support Arm:</strong> Attaches securely
+            to the operating table for strong, stable support during surgery.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Adjustable Retractor Mechanism:</strong> An adjustable
+            arm and pulley mechanism for controlled lifting and positioning of retractors.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Hands-Free Retraction:</strong> Once positioned, the
+            system holds tissues in place and reduces reliance on surgical assistants.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Durable Surgical Material:</strong> Medical-grade
+            stainless steel for durability, corrosion resistance, and straightforward sterilization.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Main Components</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Table Clamp / Mount:</strong> Attaches the system to
+            the operating table.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Support Arm:</strong> Provides structural stability.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Pulley and Cable Mechanism:</strong> Lifts and holds
+            retractors in position.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Retractor Hooks:</strong> Retract tissues and maintain
+            exposure.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Advantages</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>Provides stable and consistent retraction</li>
+          <li>Improves visibility of the surgical field</li>
+          <li>Reduces fatigue for surgical assistants</li>
+          <li>Easy to adjust and sterilize</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+/** self-retaining-refractor-6.jpeg — Bookwalter Retractor System */
+function RetractorImage6BookwalterDetails() {
+  return (
+    <div className="space-y-5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+      <p>
+        The Bookwalter Retractor System is a self-retaining surgical retractor commonly used in open abdominal and
+        pelvic surgeries. It is designed to hold tissues and organs away from the surgical site, giving surgeons clear
+        visibility and stable access to the operating area without needing continuous manual retraction.
+      </p>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Purpose</h4>
+        <p className="mt-2">
+          The main purpose of the Bookwalter system is to keep the surgical incision open and maintain exposure of deep
+          anatomical structures during long and complex operations.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Key Features</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Table-Mounted System:</strong> Attached to the
+            operating table with a clamp and support post for strong, stable support during surgery.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Circular / Oval Ring Frame:</strong> A large metal ring
+            over the surgical site; retractor blades attach around the ring to retract tissues from multiple directions.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Interchangeable Retractor Blades:</strong> Various blade
+            sizes and shapes so the setup can be tailored to the procedure.
+          </li>
+          <li>
+            <strong className="text-slate-800 dark:text-slate-200">Self-Retaining Mechanism:</strong> Once blades are
+            positioned and locked, tissues stay retracted without assistants holding retractors.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Main Components</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>Table clamp and support post</li>
+          <li>Ring frame (oval or circular)</li>
+          <li>Ratchet or clamp mechanisms</li>
+          <li>Interchangeable retractor blades</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Common Surgical Uses</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>General abdominal surgery</li>
+          <li>Urology procedures (kidney or prostate surgery)</li>
+          <li>Gynecological surgery</li>
+          <li>Trauma and vascular surgery</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 className="font-semibold text-slate-900 dark:text-white">Advantages</h4>
+        <ul className="mt-2 list-disc space-y-2 pl-5">
+          <li>Provides stable and wide surgical exposure</li>
+          <li>Reduces the need for manual assistance</li>
+          <li>Improves precision and visibility for surgeons</li>
+          <li>Durable and easy to sterilize</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 export const selfRetainingRetractorSlides: SelfRetainingRetractorSlide[] = [
   {
     id: 'retractor-1',
@@ -295,5 +442,17 @@ export const selfRetainingRetractorSlides: SelfRetainingRetractorSlide[] = [
     src: '/nareshsons/self-retaining-refractor-4.jpeg',
     title: 'Caspar Cervical Retractor System',
     content: <RetractorImage4CasparDetails />,
+  },
+  {
+    id: 'retractor-5',
+    src: '/nareshsons/self-retaining-refractor-5.jpeg',
+    title: 'Rultract Retractor Set',
+    content: <RetractorImage5RultractDetails />,
+  },
+  {
+    id: 'retractor-6',
+    src: '/nareshsons/self-retaining-refractor-6.jpeg',
+    title: 'Bookwalter Retractor System',
+    content: <RetractorImage6BookwalterDetails />,
   },
 ]
