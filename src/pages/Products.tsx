@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import SelfRetainingRetractorModal from '../components/SelfRetainingRetractorModal'
+import ImageTextDetailModal from '../components/ImageTextDetailModal'
 import {
   selfRetainingRetractorSlides,
   type SelfRetainingRetractorSlide,
 } from '../data/selfRetainingRetractorSlides'
+import { neuroHeadframeSlides, type NeuroHeadframeSlide } from '../data/neuroHeadframeSlides'
 
 const brands = [
   {
@@ -34,27 +35,18 @@ const brands = [
 ]
 
 const kardiowellSegments = [
-  'Cardial Surgery',
-  'Cardial Anaesthesia',
-  'Respiratory',
-  'Pediatric intensive care',
-]
+  'Kardiowell Cardiac Surgery',
+  'Kardiowell Cardiac Perfusion',
+  'Kardiowell Cardiac Anesthesia & Critical Care',
+  'Kardiowell Respiratory management',
+  'Kardiowell Pediatric Intensive care',
+  'Kardiowell Cardiology',
+  'Kardiowell Dialysis Range',
+] as const
 
 const nareshansSegments = [
   'Neuro Surgical Headframes',
   'Self Retaining Retractor System',
-]
-
-// Cardial Surgery images — jitni pics add karni ho utni yahan path daalo (4 per row layout)
-const cardialSurgeryImages = [
-  '/kardiowell/cardial-surgery-1.jpg',
-  '/kardiowell/cardial-surgery-2.avif',
-]
-
-const neuroSurgicalHeadframesImages = [
-  '/nareshsons/neuro-surgical-headframes-1.webp',
-  '/nareshsons/neuro-surgical-headframes-2.png',
-  '/nareshsons/neuro-surgical-headframes-3.avif',
 ]
 
 // Equipments — subcategory nahi; files yahan rakho: public/equipments/  → paths: /equipments/filename.jpg
@@ -90,6 +82,7 @@ export default function Products() {
   const [activeBrand, setActiveBrand] = useState<string | null>(null)
   const [activeSegment, setActiveSegment] = useState<string | null>(null)
   const [retractorModalSlide, setRetractorModalSlide] = useState<SelfRetainingRetractorSlide | null>(null)
+  const [neuroHeadframeModalSlide, setNeuroHeadframeModalSlide] = useState<NeuroHeadframeSlide | null>(null)
   const detailPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -105,7 +98,14 @@ export default function Products() {
   }, [activeSegment])
 
   useEffect(() => {
-    if (activeBrand !== 'Nareshsons') setRetractorModalSlide(null)
+    if (activeSegment !== 'Neuro Surgical Headframes') setNeuroHeadframeModalSlide(null)
+  }, [activeSegment])
+
+  useEffect(() => {
+    if (activeBrand !== 'Nareshsons') {
+      setRetractorModalSlide(null)
+      setNeuroHeadframeModalSlide(null)
+    }
   }, [activeBrand])
 
   const showBrandDetail =
@@ -235,10 +235,10 @@ export default function Products() {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h2 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
-                    Kardiowell – Clinical Focus Areas
+                    Kardiowell – Product lines
                   </h2>
                   <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                    Choose a specialty to explore detailed offerings (coming soon).
+                    Category list below; product photos can be added here later.
                   </p>
                 </div>
               </div>
@@ -253,66 +253,22 @@ export default function Products() {
                     transition: { staggerChildren: 0.06, delayChildren: 0.05 },
                   },
                 }}
-                className="mt-5 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4"
+                className="mt-5 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3"
               >
                 {kardiowellSegments.map((seg) => (
-                  <motion.button
+                  <motion.div
                     key={seg}
-                    type="button"
                     variants={{
                       hidden: { opacity: 0, y: 18, scale: 0.97 },
                       show: { opacity: 1, y: 0, scale: 1 },
                     }}
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => setActiveSegment(seg)}
-                    className={`rounded-xl border text-left text-sm font-medium px-4 py-3 flex items-center justify-between gap-2 ${
-                      activeSegment === seg
-                        ? 'border-brand-500 bg-brand-50 text-brand-800 dark:bg-brand-500/10 dark:border-brand-400 dark:text-brand-200'
-                        : 'border-slate-200 bg-slate-50 text-slate-800 dark:border-slate-700/50 dark:bg-slate-800/60 dark:text-slate-100'
-                    }`}
+                    whileHover={{ y: -2 }}
+                    className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-left text-sm font-medium text-slate-800 shadow-sm dark:border-slate-700/50 dark:bg-slate-800/60 dark:text-slate-100"
                   >
-                    <span>{seg}</span>
-                    <span className="text-xs text-slate-400 dark:text-slate-500">
-                      {activeSegment === seg ? 'Selected' : 'Soon'}
-                    </span>
-                  </motion.button>
+                    {seg}
+                  </motion.div>
                 ))}
               </motion.div>
-
-              {activeSegment === 'Cardial Surgery' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-900/40 p-4 sm:p-6"
-                >
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">
-                    Cardial Surgery
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                    Visuals for Kardiowell cardiology surgery segment.
-                  </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                    {cardialSurgeryImages.map((src, i) => (
-                      <motion.div
-                        key={src}
-                        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
-                        initial={{ opacity: 0, y: 12, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        whileHover={{ scale: 1.03 }}
-                      >
-                        <img
-                          src={src}
-                          alt={`Cardial surgery ${i + 1}`}
-                          className="h-full w-full object-cover"
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
             </motion.div>
           )}
 
@@ -382,25 +338,34 @@ export default function Products() {
                   <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">
                     Neuro Surgical Headframes
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-5">
-                    Visuals for Nareshsons neuro surgical headframes segment.
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+                    Tap an image to open full details and specifications.
                   </p>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                    {neuroSurgicalHeadframesImages.map((src, i) => (
-                      <motion.div
-                        key={src}
-                        className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm"
+                    {neuroHeadframeSlides.map((slide, i) => (
+                      <motion.button
+                        key={slide.id}
+                        type="button"
+                        onClick={() => {
+                          setRetractorModalSlide(null)
+                          setNeuroHeadframeModalSlide(slide)
+                        }}
+                        className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm text-left ring-0 transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                         initial={{ opacity: 0, y: 12, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.05 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
                         whileHover={{ scale: 1.03 }}
+                        aria-label={`Open details: ${slide.title}`}
                       >
                         <img
-                          src={src}
-                          alt={`Neuro surgical headframe ${i + 1}`}
+                          src={slide.src}
+                          alt={slide.title}
                           className={`h-full w-full object-cover ${i === 0 ? 'object-bottom scale-110' : ''}`}
                         />
-                      </motion.div>
+                        <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent px-2 py-2 text-center text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 sm:text-xs">
+                          View details
+                        </span>
+                      </motion.button>
                     ))}
                   </div>
                 </motion.div>
@@ -427,7 +392,10 @@ export default function Products() {
                       <motion.button
                         key={slide.id}
                         type="button"
-                        onClick={() => setRetractorModalSlide(slide)}
+                        onClick={() => {
+                          setNeuroHeadframeModalSlide(null)
+                          setRetractorModalSlide(slide)
+                        }}
                         className="group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/60 bg-slate-100 dark:bg-slate-800/60 aspect-square shadow-sm text-left ring-0 transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                         initial={{ opacity: 0, y: 12, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -501,9 +469,12 @@ export default function Products() {
         </div>
       </motion.section>
 
-      <SelfRetainingRetractorModal
-        slide={retractorModalSlide}
-        onClose={() => setRetractorModalSlide(null)}
+      <ImageTextDetailModal
+        slide={retractorModalSlide ?? neuroHeadframeModalSlide}
+        onClose={() => {
+          setRetractorModalSlide(null)
+          setNeuroHeadframeModalSlide(null)
+        }}
       />
     </div>
   )

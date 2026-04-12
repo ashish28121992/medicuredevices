@@ -1,14 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
-import type { SelfRetainingRetractorSlide } from '../data/selfRetainingRetractorSlides'
+
+export type ImageTextDetailSlide = {
+  src: string
+  title: string
+  content: ReactNode
+}
 
 type Props = {
-  slide: SelfRetainingRetractorSlide | null
+  slide: ImageTextDetailSlide | null
   onClose: () => void
 }
 
-export default function SelfRetainingRetractorModal({ slide, onClose }: Props) {
+export default function ImageTextDetailModal({ slide, onClose }: Props) {
   useEffect(() => {
     if (!slide) return
     const prev = document.body.style.overflow
@@ -33,7 +38,7 @@ export default function SelfRetainingRetractorModal({ slide, onClose }: Props) {
     <motion.div
       role="dialog"
       aria-modal="true"
-      aria-labelledby="retractor-modal-title"
+      aria-labelledby="image-text-detail-modal-title"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
@@ -61,7 +66,7 @@ export default function SelfRetainingRetractorModal({ slide, onClose }: Props) {
         <div className="flex min-h-0 flex-1 flex-col border-t border-slate-200 dark:border-slate-700/60 sm:border-l sm:border-t-0">
           <div className="flex items-start justify-between gap-3 border-b border-slate-200 px-4 py-3 dark:border-slate-700/60 sm:px-5">
             <h3
-              id="retractor-modal-title"
+              id="image-text-detail-modal-title"
               className="text-base font-semibold text-slate-900 dark:text-white sm:text-lg"
             >
               {slide.title}

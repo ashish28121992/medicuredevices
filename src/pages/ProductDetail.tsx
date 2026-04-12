@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { COMPANY_MAILTO } from '../config/company'
 import { getProductById } from '../data/products'
 
 export default function ProductDetail() {
@@ -125,7 +126,7 @@ export default function ProductDetail() {
               className="mt-10 flex flex-wrap gap-4"
             >
               <a
-                href="mailto:support@medicuredevices.com"
+                href={COMPANY_MAILTO}
                 className="rounded-xl bg-brand-600 px-8 py-4 font-semibold text-white hover:bg-brand-500 active:bg-brand-700 transition min-h-[48px] inline-flex items-center"
               >
                 Enquire / Contact

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { COMPANY_EMAIL, COMPANY_MAILTO } from '../config/company'
 import { GOOGLE_MAPS_EMBED_SRC, GOOGLE_MAPS_OPEN_URL } from '../config/contactMap'
 
 const addressLines = [
@@ -122,7 +123,7 @@ export default function Contact() {
 
                 <div>
                   <motion.a
-                    href="mailto:mdsbpl@yahoo.com"
+                    href={COMPANY_MAILTO}
                     whileHover={{ x: 4 }}
                     className="block group"
                   >
@@ -130,7 +131,7 @@ export default function Contact() {
                       E-mail
                     </p>
                     <span className="mt-2 text-lg font-medium text-brand-600 dark:text-brand-400 group-hover:underline break-all">
-                      mdsbpl@yahoo.com
+                      {COMPANY_EMAIL}
                     </span>
                   </motion.a>
                 </div>

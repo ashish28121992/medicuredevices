@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { COMPANY_EMAIL, COMPANY_MAILTO } from '../config/company'
 
 export default function Footer() {
   return (
@@ -60,7 +61,7 @@ export default function Footer() {
               Nehru Nagar, Bhopal,<br />
               Madhya Pradesh 462003
             </p>
-            <a href="mailto:mdsbpl@yahoo.com" className="mt-3 block py-2.5 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 break-all">mdsbpl@yahoo.com</a>
+            <a href={COMPANY_MAILTO} className="mt-3 block py-2.5 text-sm text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-400 break-all">{COMPANY_EMAIL}</a>
             <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-500">Company</p>
             <a href="tel:+917553509368" className="block py-1 text-sm font-semibold text-slate-800 hover:text-brand-600 dark:text-slate-200 dark:hover:text-brand-400">+91 75535 09368</a>
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Also</p>
